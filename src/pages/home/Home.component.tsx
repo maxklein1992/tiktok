@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Card from "../../components/card";
 import { detail } from "../../constants/paths";
 import styles from "./Home.module.scss";
+import { Props } from "./Home.types";
 
-const Home = ({ contents }) => {
+const Home = ({ contents }: Props) => {
   const navigate = useNavigate();
 
   const goToVideo = ({ id }) => {
@@ -21,8 +22,7 @@ const Home = ({ contents }) => {
               <Card
                 key={`content: ${content.title}`}
                 onClick={() => goToVideo({ id: content.id })}
-                id={content.id}
-                youtubeId={content.youtubeId}
+                content={content}
               />
             );
           })}

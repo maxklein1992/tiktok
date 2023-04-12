@@ -1,6 +1,7 @@
+import type { Like } from "../../pages/detail/Detail.types";
 import { LIKE_ADD, LIKE_DELETE } from "../actions/likes";
 
-const initialState = {
+const initialState: LikesState = {
   likes: [
     {
       contentId: 1,
@@ -9,7 +10,23 @@ const initialState = {
   ],
 };
 
-const Likes = (state = initialState, actions) => {
+interface LikesState {
+  likes: Like[];
+}
+
+interface LikeDeleteAction {
+  type: typeof LIKE_DELETE;
+  like: Like;
+}
+
+interface LikeAddAction {
+  type: typeof LIKE_ADD;
+  like: Like;
+}
+
+type LikesAction = LikeDeleteAction | LikeAddAction;
+
+const Likes = (state = initialState, actions: LikesAction) => {
   switch (actions.type) {
     case LIKE_DELETE:
       return {

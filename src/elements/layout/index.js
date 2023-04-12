@@ -1,3 +1,3 @@
-import Layout from "./Layout.component";
+import Layout from "./Layout.component.tsx";
 
 export default Layout;

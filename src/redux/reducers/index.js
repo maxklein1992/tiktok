@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import contents from "./contents";
-import likes from "./likes";
-import comments from "./comments";
-import user from "./user";
+import contents from "./contents.tsx";
+import likes from "./likes.tsx";
+import comments from "./comments.tsx";
+import user from "./user.tsx";
 
 const rootReducer = combineReducers({ user, contents, likes, comments });
 

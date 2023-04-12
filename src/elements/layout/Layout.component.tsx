@@ -1,10 +1,15 @@
 import React from "react";
+import type { ReactNode } from "react";
 
 import styles from "./Layout.module.scss";
-import Icon from "../../elements/icon/Icon.component";
+import Icon from "../icon";
 import TiktokIcon from "../../assets/icons/tiktok.png";
 
-const Layout = ({ children }) => {
+export type Props = {
+  children: ReactNode;
+};
+
+const Layout = ({ children }: Props) => {
   return (
     <div className={styles.component}>
       <div className={styles.headerComponent}>

@@ -1,6 +1,7 @@
+import type { Comment } from "../../pages/detail/Detail.types";
 import { COMMENT_ADD } from "../actions/comments";
 
-const initialState = {
+const initialState: CommentsState = {
   comments: [
     {
       contentId: 0,
@@ -75,7 +76,16 @@ const initialState = {
   ],
 };
 
-const Comments = (state = initialState, actions) => {
+interface CommentsState {
+  comments: Comment[];
+}
+
+interface CommentAddAction {
+  type: typeof COMMENT_ADD;
+  comment: Comment;
+}
+
+const Comments = (state = initialState, actions: CommentAddAction) => {
   switch (actions.type) {
     case COMMENT_ADD:
       return {

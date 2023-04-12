@@ -6,7 +6,7 @@ import styles from "./CommentsList.module.scss";
 import * as commentsActions from "../../redux/actions/comments";
 import UpIcon from "../../assets/icons/up.png";
 import DownIcon from "../../assets/icons/down.png";
-import Icon from "../../elements/icon/Icon.component";
+import Icon from "../../elements/icon";
 import PlayIcon from "../../assets/icons/play.png";
 import Button from "../../elements/button";
 import { capitalizeFirstLetter } from "../../utils/string";

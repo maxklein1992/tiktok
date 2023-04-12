@@ -7,17 +7,25 @@ import LikeWhiteIcon from "../../assets/icons/like-white.png";
 import * as likesActions from "../../redux/actions/likes";
 import LikeRedIcon from "../../assets/icons/like-red.png";
 import CommentIcon from "../../assets/icons/comment.png";
-import Icon from "../../elements/icon/Icon.component";
 import Button from "../../elements/button";
+import { Props } from "./Card.types";
+import Icon from "../../elements/icon";
 
-const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
+const Card = ({
+  content,
+  user,
+  likes,
+  onClick,
+  addLike,
+  deleteLike,
+}: Props) => {
   const [liked, setLiked] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const userId = user.id;
 
   const getDetails = async () => {
     const hasLiked = likes.filter(
-      (like) => like.contentId === id && like.userId === userId
+      (like) => like.contentId === content.id && like.userId === userId
     ).length;
     setLiked(!!hasLiked);
   };
@@ -34,7 +42,7 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
         setLoading(false);
       }
     })();
-  }, [id, likes]);
+  }, [content.id, likes]);
 
   if (loading) return null;
 
@@ -42,7 +50,7 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
     <div className={styles.component} onClick={onClick}>
       <div className={styles.videoContainer}>
         <YouTube
-          videoId={youtubeId}
+          videoId={content.youtubeId}
           opts={{ width: "100%", height: "100%" }}
           className={styles.videoPlayer}
         />
@@ -62,8 +70,8 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
             e.preventDefault();
             e.stopPropagation();
             !liked
-              ? addLike({ userId: userId, contentId: id })
-              : deleteLike({ userId: userId, contentId: id });
+              ? addLike({ userId: userId, contentId: content.id })
+              : deleteLike({ userId: userId, contentId: content.id });
           }}
         >
           <Icon alt="like" icon={liked ? LikeRedIcon : LikeWhiteIcon} />

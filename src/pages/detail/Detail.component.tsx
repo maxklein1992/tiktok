@@ -10,22 +10,34 @@ import * as likesActions from "../../redux/actions/likes";
 import LikeWhiteIcon from "../../assets/icons/like-white.png";
 import LikeRedIcon from "../../assets/icons/like-red.png";
 import CommentIcon from "../../assets/icons/comment.png";
-import Icon from "../../elements/icon/Icon.component";
+import Icon from "../../elements/icon";
 import { capitalizeFirstLetter } from "../../utils/string";
 import Button from "../../elements/button";
 import CommentsList from "../../components/commentsList";
+import type { Comment, Props } from "./Detail.types";
+import { ContentItem } from "../home/Home.types";
 
-const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
+const Detail = ({
+  contents,
+  comments,
+  likes,
+  user,
+  addLike,
+  deleteLike,
+}: Props) => {
   const { t } = useTranslation();
   const location = useLocation();
   const contentId = location.state.id;
   const userId = user.id;
 
-  const [contentDetails, setContentDetails] = React.useState(null);
-  const [likeCount, setLikeCount] = React.useState(0);
-  const [commentsList, setCommentsList] = React.useState(null);
-  const [liked, setLiked] = React.useState(false);
-  const [loading, setLoading] = React.useState(true);
+  const [contentDetails, setContentDetails] =
+    React.useState<ContentItem | null>(null);
+  const [likeCount, setLikeCount] = React.useState<Number>(0);
+  const [commentsList, setCommentsList] = React.useState<Comment[] | null>(
+    null
+  );
+  const [liked, setLiked] = React.useState<Boolean>(false);
+  const [loading, setLoading] = React.useState<Boolean>(true);
 
   const getLikesDetails = async () => {
     const allLikes = likes.filter(
@@ -102,11 +114,13 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
                 icon={liked ? LikeRedIcon : LikeWhiteIcon}
                 size="big"
               />
-              <p className={styles.countsTitle}>{likeCount}</p>
+              <p className={styles.countsTitle}>{`${likeCount}`}</p>
             </Button>
             <div className={styles.iconContainer}>
               <Icon alt="comment" icon={CommentIcon} size="big" />
-              <p className={styles.countsTitle}>{commentsList.length}</p>
+              <p className={styles.countsTitle}>{`${
+                commentsList ? commentsList.length : 0
+              }`}</p>
             </div>
           </div>
         </>

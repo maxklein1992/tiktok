@@ -1,11 +1,15 @@
-import { LIKE_ADD, LIKE_DELETE } from "../actions/likes";
+import type { User as UserProps } from "../../pages/detail/Detail.types";
 
-const initialState = {
+const initialState: UserState = {
   user: {
     id: 0,
     name: "max",
   },
 };
+
+interface UserState {
+  user: UserProps;
+}
 
 const User = (state = initialState, actions) => {
   switch (actions.type) {

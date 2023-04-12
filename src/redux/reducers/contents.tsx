@@ -1,4 +1,6 @@
-const initialState = {
+import type { ContentItem } from "../../pages/home/Home.types";
+
+const initialState: ContentsState = {
   contents: [
     {
       id: 0,
@@ -22,6 +24,10 @@ const initialState = {
     },
   ],
 };
+
+interface ContentsState {
+  contents: ContentItem[];
+}
 
 const contents = (state = initialState, actions) => {
   switch (actions.type) {

@@ -1,3 +1,3 @@
-import Detail from "./Detail.component";
+import Detail from "./Detail.component.tsx";
 
 export default Detail;
