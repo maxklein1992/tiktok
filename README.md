@@ -16,7 +16,6 @@ These are the functionalities that you can perform in the app:
 
 - Scroll through the comments under a video
 
-
 ## Getting started
 
 ### Prerequisites
@@ -55,6 +54,7 @@ The stack of this app is as follows:
 
 - **React.js** - Structural framework for dynamic web applications.
 - **Redux Store** - Central bucket which stores all the states of an application
+- **i18N Translate** - An internationalization library for supporting multiple languages in your application.
 
 ## Any Questions:
 
