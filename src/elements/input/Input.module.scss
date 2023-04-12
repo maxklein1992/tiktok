@@ -1,0 +1,27 @@
+@import "../../styles/pxToRem";
+@import "../../styles/mediaQuery";
+
+.input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: pxToRem(220);
+  height: pxToRem(40);
+  padding: 12px 10px;
+  border: 2px solid var(--primaryColorGray);
+  font-size: pxToRem(12);
+  border-radius: 8px;
+  resize: none;
+
+  &::placeholder {
+    text-align: center;
+  }
+
+  /* Size variants */
+  .big {
+    width: pxToRem(500);
+    height: pxToRem(100);
+    padding: 22px 20px;
+    font-size: pxToRem(16);
+  }
+}

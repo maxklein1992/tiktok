@@ -1,0 +1,17 @@
+@import "../../styles/pxToRem";
+
+.icon {
+  width: pxToRem(20);
+  height: pxToRem(20);
+}
+
+// Size variants
+.medium {
+  width: pxToRem(50);
+  height: pxToRem(50);
+}
+
+.big {
+  width: pxToRem(80);
+  height: pxToRem(80);
+}

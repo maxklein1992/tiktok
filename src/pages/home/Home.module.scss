@@ -1,0 +1,24 @@
+@import "../../styles/pxToRem";
+
+.component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 170px 0 170px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  font-size: pxToRem(40);
+  margin-bottom: pxToRem(40);
+}
+
+.contentsOverview {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: pxToRem(10);
+}
