@@ -1,4 +1,4 @@
-import { ContentItem } from "../home/Home.component";
+import { ContentItem } from "../home/Home.types";
 
 export interface Props {
   /**
