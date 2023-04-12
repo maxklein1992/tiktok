@@ -49,18 +49,12 @@ $ npm install
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:3000/`. The application will automatically reload if you change any of the source files.
 
-### Running unit tests
-
-Run `ng test` to execute the unit tests.
-
 ## Stack
 
 The stack of this app is as follows:
 
 - **React.js** - Structural framework for dynamic web applications.
 - **Redux Store** - Central bucket which stores all the states of an application
-- **Typescript** - Superset of JavaScript which provides optional static typing, classes and interfaces.
-- **Jest** - Javascript testing framework
 
 ## Any Questions:
 
