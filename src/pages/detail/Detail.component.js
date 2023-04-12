@@ -11,12 +11,12 @@ import CommentIcon from "../../assets/icons/comment.png";
 import Icon from "../../elements/icon/Icon.component";
 import { capitalizeFirstLetter } from "../../utils/string";
 import Button from "../../elements/button";
-import { userId } from "../../constants/dummy";
 import CommentsList from "../../components/commentsList";
 
-const Detail = ({ contents, comments, likes, addLike, deleteLike }) => {
+const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
   const location = useLocation();
   const contentId = location.state.id;
+  const userId = user.id;
 
   const [contentDetails, setContentDetails] = React.useState(null);
   const [likeCount, setLikeCount] = React.useState(0);
@@ -108,6 +108,7 @@ export default connect(
     contents: state.contents.contents,
     likes: state.likes.likes,
     comments: state.comments.comments,
+    user: state.user,
   }),
   (dispatch) => ({
     addLike: ({ userId, contentId }) =>

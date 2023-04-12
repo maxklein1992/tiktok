@@ -8,10 +8,10 @@ import LikeRedIcon from "../../assets/icons/like-red.png";
 import CommentIcon from "../../assets/icons/comment.png";
 import Icon from "../../elements/icon/Icon.component";
 import Button from "../../elements/button";
-import { userId } from "../../constants/dummy";
 
-const Card = ({ onClick, id, likes, addLike, deleteLike }) => {
+const Card = ({ onClick, id, user, likes, addLike, deleteLike }) => {
   const [liked, setLiked] = React.useState(false);
+  const userId = user.id;
 
   const getDetails = () => {
     const hasLiked = likes.filter(
@@ -41,8 +41,8 @@ const Card = ({ onClick, id, likes, addLike, deleteLike }) => {
             e.preventDefault();
             e.stopPropagation();
             !liked
-              ? addLike({ userId, contentId: id })
-              : deleteLike({ userId, contentId: id });
+              ? addLike({ userId: userId, contentId: id })
+              : deleteLike({ userId: userId, contentId: id });
           }}
         >
           <Icon alt="like" icon={liked ? LikeRedIcon : LikeWhiteIcon} />
@@ -54,6 +54,7 @@ const Card = ({ onClick, id, likes, addLike, deleteLike }) => {
 
 export default connect(
   (state) => ({
+    user: state.user,
     likes: state.likes.likes,
   }),
   (dispatch) => ({

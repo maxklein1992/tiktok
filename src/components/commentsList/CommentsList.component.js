@@ -9,11 +9,10 @@ import DownIcon from "../../assets/icons/down.png";
 import Icon from "../../elements/icon/Icon.component";
 import PlayIcon from "../../assets/icons/play.png";
 import Button from "../../elements/button";
-import { userName } from "../../constants/dummy";
 import { capitalizeFirstLetter } from "../../utils/string";
 import Input from "../../elements/input";
 
-const CommentsList = ({ comments, addComment, contentId }) => {
+const CommentsList = ({ comments, addComment, contentId, user }) => {
   const firstMessageRef = React.useRef(null);
   const lastMessageRef = React.useRef(null);
   const [newComment, setNewComment] = React.useState("");
@@ -22,6 +21,7 @@ const CommentsList = ({ comments, addComment, contentId }) => {
   const [scrollPercentage, setScrollPercentage] = React.useState(0);
 
   const isEmpty = comments.length === 0;
+  const userName = user.name;
 
   const handleClickScroll = (direction, isSmooth) => {
     let element = null;
@@ -176,7 +176,9 @@ const CommentsList = ({ comments, addComment, contentId }) => {
 };
 
 export default connect(
-  (state) => ({}),
+  (state) => ({
+    user: state.user,
+  }),
   (dispatch) => ({
     addComment: ({ title, contentId, userName }) =>
       dispatch(commentsActions.addComment({ title, contentId, userName })),
