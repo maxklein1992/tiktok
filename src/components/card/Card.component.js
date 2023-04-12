@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import YouTube from "react-youtube";
 
 import styles from "./Card.module.scss";
 import LikeWhiteIcon from "../../assets/icons/like-white.png";
@@ -9,7 +10,7 @@ import CommentIcon from "../../assets/icons/comment.png";
 import Icon from "../../elements/icon/Icon.component";
 import Button from "../../elements/button";
 
-const Card = ({ onClick, id, user, likes, addLike, deleteLike }) => {
+const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
   const [liked, setLiked] = React.useState(false);
   const userId = user.id;
 
@@ -25,7 +26,14 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike }) => {
   }, [id, likes]);
 
   return (
-    <Button className={styles.component} onClick={onClick}>
+    <div className={styles.component} onClick={onClick}>
+      <div className={styles.videoContainer}>
+        <YouTube
+          videoId={youtubeId}
+          opts={{ width: "100%", height: "100%" }}
+          className={styles.videoPlayer}
+        />
+      </div>
       <div className={styles.buttonsContainer}>
         <Button
           onClick={(e) => {
@@ -48,7 +56,7 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike }) => {
           <Icon alt="like" icon={liked ? LikeRedIcon : LikeWhiteIcon} />
         </Button>
       </div>
-    </Button>
+    </div>
   );
 };
 

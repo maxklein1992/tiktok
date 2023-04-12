@@ -12,14 +12,34 @@
 }
 
 .header {
+  display: flex;
+  flex: 1;
   font-size: pxToRem(26);
   color: var(--primaryColorGray);
 }
 
+.videoContainer {
+  display: flex;
+  justify-content: center;
+  flex: 6;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.videoPlayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .commentsContainer {
   display: flex;
-  flex-direction: column;
+  flex: 3;
   width: 100%;
+  margin-top: 50px;
 }
 
 .buttonsContainer {
@@ -27,7 +47,7 @@
   flex-direction: column;
   row-gap: pxToRem(80);
   position: absolute;
-  right: 0;
+  right: -100px;
   top: 50%;
   transform: translateY(-50%);
 }

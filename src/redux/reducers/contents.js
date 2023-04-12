@@ -3,22 +3,22 @@ const initialState = {
     {
       id: 0,
       title: "Video 1",
-      url: "",
+      youtubeId: "o5MutYFWsM8",
     },
     {
       id: 1,
       title: "Video 2",
-      url: "",
+      youtubeId: "zFGMLQ3q15c",
     },
     {
       id: 2,
       title: "Video 3",
-      url: "",
+      youtubeId: "1sUsHK5JlAQ",
     },
     {
       id: 3,
       title: "Video 4",
-      url: "",
+      youtubeId: "k2TJUMP3bA0",
     },
   ],
 };

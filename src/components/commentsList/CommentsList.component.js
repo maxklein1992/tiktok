@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import styles from "./CommentsList.module.scss";
 import * as commentsActions from "../../redux/actions/comments";
-import Comment from "../comment/Comment.component";
 import UpIcon from "../../assets/icons/up.png";
 import DownIcon from "../../assets/icons/down.png";
 import Icon from "../../elements/icon/Icon.component";
@@ -68,7 +67,7 @@ const CommentsList = ({ comments, addComment, contentId, user }) => {
     });
     if (response.comment) {
       setNewComment("");
-      //setLoading(false);
+      setLoading(false);
     }
     if (response.error) {
       setNewComment("");
@@ -177,7 +176,7 @@ const CommentsList = ({ comments, addComment, contentId, user }) => {
 
 export default connect(
   (state) => ({
-    user: state.user,
+    user: state.user.user,
   }),
   (dispatch) => ({
     addComment: ({ title, contentId, userName }) =>

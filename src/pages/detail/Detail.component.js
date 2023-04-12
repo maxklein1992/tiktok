@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import findIndex from "lodash.findindex";
+import YouTube from "react-youtube";
 
 import styles from "./Detail.module.scss";
 import * as likesActions from "../../redux/actions/likes";
@@ -74,7 +75,16 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
           <p className={styles.header}>
             {capitalizeFirstLetter(contentDetails.title)}
           </p>
-          <CommentsList comments={commentsList} contentId={contentId} />
+          <div className={styles.videoContainer}>
+            <YouTube
+              videoId={contentDetails.youtubeId}
+              opts={{ width: "100%", height: "100%" }}
+              className={styles.videoPlayer}
+            />
+          </div>
+          <div className={styles.commentsContainer}>
+            <CommentsList comments={commentsList} contentId={contentId} />
+          </div>
           <div className={styles.buttonsContainer}>
             <Button
               onClick={() =>
@@ -108,7 +118,7 @@ export default connect(
     contents: state.contents.contents,
     likes: state.likes.likes,
     comments: state.comments.comments,
-    user: state.user,
+    user: state.user.user,
   }),
   (dispatch) => ({
     addLike: ({ userId, contentId }) =>

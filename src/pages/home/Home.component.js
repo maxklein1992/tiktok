@@ -14,7 +14,6 @@ const Home = ({ contents }) => {
   };
   return (
     <div className={styles.component}>
-      <p className={styles.header}>Tik Tok</p>
       <div className={styles.contentsOverview}>
         {contents.map((content) => {
           return (
@@ -22,6 +21,7 @@ const Home = ({ contents }) => {
               key={`content: ${content.title}`}
               onClick={() => goToVideo({ id: content.id })}
               id={content.id}
+              youtubeId={content.youtubeId}
             />
           );
         })}
