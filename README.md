@@ -54,6 +54,7 @@ The stack of this app is as follows:
 
 - **React.js** - Structural framework for dynamic web applications.
 - **Redux Store** - Central bucket which stores all the states of an application
+- **Typescript** - Superset of JavaScript which provides optional static typing, classes and interfaces.
 - **i18N Translate** - An internationalization library for supporting multiple languages in your application.
 
 ## Any Questions:
