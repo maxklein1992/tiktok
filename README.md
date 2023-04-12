@@ -1,70 +1,133 @@
-# Getting Started with Create React App
+<h1 align="center">Tik tok App</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a Tik tok web application without database where the user can watch videos, he can like videos, and he can comment on videos.
 
-## Available Scripts
+![image](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nytimes.com%2F2022%2F10%2F26%2Ftechnology%2Fpersonaltech%2Ftiktok-guide-latecomers.html&psig=AOvVaw19-K3s6zOP016w9BuHVNsB&ust=1681406693762000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCICH6ZjupP4CFQAAAAAdAAAAABAF)
 
-In the project directory, you can run:
+## The Basics
 
-### `npm start`
+You can use the API without using any code by pasting the following URL in your address bar.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
+https://api.thecatapi.com/v1/images/search
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Cat API returns a JSON string with the information of one random entry in their cat image database. For example the JSON string can be:
 
-### `npm test`
+```
+[{"id":"Y987fJ8ZD","url":"https://cdn2.thecatapi.com/images/Y987fJ8ZD.jpg","width":474,"height":632}]
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In order to view the image, you need to copy the URL part of the string and paste it in your address bar.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can also make your request more specific by putting a `?` to the end of URL with one or more parameters. For example to return a Russian Blue (rblu) cat:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+https://api.thecatapi.com/v1/images/search?breed_ids=rblu
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## About this project
 
-### `npm run eject`
+In this project we use the Cat Api in multiple ways:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- To get a random image of a cat.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+https://api.thecatapi.com/v1/images/search
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- To get all breed names
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+https://api.thecatapi.com/v1/breeds
+```
 
-## Learn More
+- To search on breed names and get access to different kind of information about a breed.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+https://api.thecatapi.com/v1/breeds/search?q={breedName}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- To create favorite breeds.
 
-### Code Splitting
+```
+https://api.thecatapi.com/v1/favourites
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Passing
 
-### Analyzing the Bundle Size
+```
+{
+    "image_id":"id of the image",
+    "sub_id":"optional unique id of your user"
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- To get all favorite breeds.
 
-### Making a Progressive Web App
+```
+https://api.thecatapi.com/v1/favourites
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- To remove a breed from the favorite list.
 
-### Advanced Configuration
+```
+https://api.thecatapi.com/v1/favourites/${favouriteId}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```
+https://api.thecatapi.com/v1/favourites/${favouriteId}
+```
 
-### Deployment
+## Getting started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Prerequisites
 
-### `npm run build` fails to minify
+- Install [Node.js](https://nodejs.org/en/) which includes [Node Package Manager](https://www.npmjs.com/get-npm).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Install the Angular CLI globally:
+
+```
+$ npm install -g @angular/cli
+```
+
+### Clone the project
+
+Open a terminal and run the following git command:
+
+```
+$ git clone https://github.com/maxklein1992/Cat-API.git
+```
+
+### Install project dependencies
+
+Install the projects dependencies by running in the root of the project
+
+```
+$ npm install
+```
+
+Run `ng build` to build the project.
+
+### Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+
+### Running unit tests
+
+Run `ng test` to execute the unit tests.
+
+## Stack
+
+The stack of this app is as follows:
+
+- **Angular.js** - Structural framework for dynamic web applications.
+- **Typescript** - Superset of JavaScript which provides optional static typing, classes and interfaces.
+- **Jest** - Javascript testing framework
+- **TypeDoc** - A documentation generator for Typescript projects.
+- **Ngx Translate** - The internationalization (i18n) library for Angular projects.
+
+## Any Questions:
+
+- **Email**: mcklein1992@gmail.com
