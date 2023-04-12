@@ -74,9 +74,11 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
     <div className={styles.component}>
       {contentId !== null && contentDetails ? (
         <>
-          <p className={styles.header}>
-            {capitalizeFirstLetter(contentDetails.title)}
-          </p>
+          <div className={styles.titleContainer}>
+            <p className={styles.title}>
+              {capitalizeFirstLetter(contentDetails.title)}
+            </p>
+          </div>
           <div className={styles.videoContainer}>
             <YouTube
               videoId={contentDetails.youtubeId}
@@ -109,7 +111,7 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
           </div>
         </>
       ) : (
-        <p>${t("pages.detail.no_details")}</p>
+        <p>{t("pages.detail.no_details")}</p>
       )}
     </div>
   );

@@ -1,6 +1,14 @@
+@import "../../styles/mediaQuery";
+
 .container {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  padding: 0 80px 0 80px;
+  height: 100%;
+
+  @include mediaQuery(s, up) {
+    padding: 0 80px 0 80px;
+  }
 }
 
 .commentsContainer {
@@ -21,7 +29,7 @@
 }
 
 .comment {
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 
   &:last-child {
     margin-bottom: 0;
@@ -34,7 +42,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .scrollButton {

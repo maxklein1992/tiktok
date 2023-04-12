@@ -14,18 +14,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 100px;
+  height: 10%;
   width: 100%;
-  padding: 0 700px;
+  padding: 0 30px;
+
+  @include mediaQuery(s, up) {
+    height: 15%;
+    padding: 0 60px;
+  }
+
+  @include mediaQuery(m, up) {
+    padding: 0 90px;
+  }
+
+  @include mediaQuery(l, up) {
+    padding: 0 220px;
+  }
 }
 
 .header {
-  font-size: pxToRem(40);
+  font-size: pxToRem(25);
+
+  @include mediaQuery(s, up) {
+    font-size: pxToRem(40);
+  }
 }
 
 .container {
   display: flex;
   width: 100%;
-  height: 100%;
-  padding: 0 600px;
+  height: 90%;
+  padding: 0 20px;
+
+  @include mediaQuery(s, up) {
+    height: 85%;
+    padding: 0 60px;
+  }
+
+  @include mediaQuery(m, up) {
+    padding: 0 120px;
+  }
+
+  @include mediaQuery(l, up) {
+    padding: 0 160px;
+  }
+
+  @include mediaQuery(xl, up) {
+    padding: 0 390px;
+  }
 }

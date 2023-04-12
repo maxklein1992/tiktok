@@ -1,4 +1,5 @@
 @import "../../styles/pxToRem";
+@import "../../styles/mediaQuery";
 
 .component {
   display: flex;
@@ -6,25 +7,41 @@
   height: 100%;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 0;
+  padding: 20px 0;
   position: relative;
   flex-direction: column;
 }
 
-.header {
+.titleContainer {
   display: flex;
-  flex: 1;
-  font-size: pxToRem(26);
+  height: 10%;
+  width: 100%;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  height: 100%;
+  font-size: pxToRem(18);
   color: var(--primaryColorGray);
+
+  @include mediaQuery(s, up) {
+    font-size: pxToRem(26);
+  }
 }
 
 .videoContainer {
   display: flex;
   justify-content: center;
-  flex: 6;
+  height: 50%;
   width: 100%;
   position: relative;
   overflow: hidden;
+
+  @include mediaQuery(s, up) {
+    height: 75%;
+  }
 }
 
 .videoPlayer {
@@ -37,9 +54,13 @@
 
 .commentsContainer {
   display: flex;
-  flex: 3;
+  height: 40%;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 20px;
+
+  @include mediaQuery(s, up) {
+    height: 20%;
+  }
 }
 
 .buttonsContainer {
