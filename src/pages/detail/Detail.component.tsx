@@ -11,11 +11,11 @@ import LikeWhiteIcon from "../../assets/icons/like-white.png";
 import LikeRedIcon from "../../assets/icons/like-red.png";
 import CommentIcon from "../../assets/icons/comment.png";
 import Icon from "../../elements/icon";
-import { capitalizeFirstLetter } from "../../utils/string";
 import Button from "../../elements/button";
 import CommentsList from "../../components/commentsList";
 import type { Comment, Props } from "./Detail.types";
 import { ContentItem } from "../home/Home.types";
+import { capitalizeFirstLetter } from "../../utils/string";
 
 const Detail = ({
   contents,

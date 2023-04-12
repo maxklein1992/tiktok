@@ -9,8 +9,8 @@ import DownIcon from "../../assets/icons/down.png";
 import Icon from "../../elements/icon";
 import PlayIcon from "../../assets/icons/play.png";
 import Button from "../../elements/button";
-import { capitalizeFirstLetter } from "../../utils/string";
 import Input from "../../elements/input";
+import { capitalizeFirstLetter } from "../../utils/string";
 
 const CommentsList = ({ comments, addComment, contentId, user }) => {
   const { t } = useTranslation();
