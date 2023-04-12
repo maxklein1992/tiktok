@@ -14,11 +14,12 @@ const Likes = (state = initialState, actions) => {
     case LIKE_DELETE:
       return {
         ...state,
-        likes: state.likes.filter(
-          (like) =>
-            like.contentId !== actions.like.contentId &&
+        likes: state.likes.filter((like) => {
+          return (
+            like.contentId !== actions.like.contentId ||
             like.userId !== actions.like.userId
-        ),
+          );
+        }),
       };
     case LIKE_ADD:
       return {
