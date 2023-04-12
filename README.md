@@ -2,7 +2,7 @@
 
 This is a Tik tok web application without database where the user can watch videos, he can like videos, and he can comment on videos.
 
-![image](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nytimes.com%2F2022%2F10%2F26%2Ftechnology%2Fpersonaltech%2Ftiktok-guide-latecomers.html&psig=AOvVaw19-K3s6zOP016w9BuHVNsB&ust=1681406693762000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCICH6ZjupP4CFQAAAAAdAAAAABAF)
+![image](https://static01.nyt.com/images/2022/10/26/technology/personaltech/26TECHTIP-TOP/26TECHTIP-TOP-superJumbo.jpg)
 
 ## The Basics
 
