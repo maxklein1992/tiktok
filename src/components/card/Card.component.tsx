@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ButtonHTMLAttributes } from "react";
 import { connect } from "react-redux";
 import YouTube from "react-youtube";
 
@@ -8,8 +8,10 @@ import * as likesActions from "../../redux/actions/likes";
 import LikeRedIcon from "../../assets/icons/like-red.png";
 import CommentIcon from "../../assets/icons/comment.png";
 import Button from "../../elements/button";
-import { Props } from "./Card.types";
+import type { Props } from "./Card.types";
 import Icon from "../../elements/icon";
+
+type Event = MouseEvent | TouchEvent;
 
 const Card = ({
   content,
@@ -57,7 +59,7 @@ const Card = ({
       </div>
       <div className={styles.buttonsContainer}>
         <Button
-          onClick={(e) => {
+          onClick={(e: Event) => {
             e.preventDefault();
             e.stopPropagation();
             onClick();
@@ -66,7 +68,7 @@ const Card = ({
           <Icon alt="comment" icon={CommentIcon} />
         </Button>
         <Button
-          onClick={(e) => {
+          onClick={(e: Event) => {
             e.preventDefault();
             e.stopPropagation();
             !liked
