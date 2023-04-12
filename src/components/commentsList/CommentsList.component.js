@@ -18,6 +18,7 @@ const CommentsList = ({ comments, addComment, contentId }) => {
   const lastMessageRef = React.useRef(null);
   const [newComment, setNewComment] = React.useState("");
   const [isScrollable, setIsScrollable] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const [scrollPercentage, setScrollPercentage] = React.useState(0);
 
   const isEmpty = comments.length === 0;
@@ -59,15 +60,20 @@ const CommentsList = ({ comments, addComment, contentId }) => {
   };
 
   const submitComment = async () => {
-    //setFeedbackIsSubmitting(true);
+    setLoading(true);
     const response = await addComment({
       title: newComment,
       contentId,
       userName,
     });
-    if (response) {
+    if (response.comment) {
       setNewComment("");
-      //setFeedbackIsSubmitting(false);
+      //setLoading(false);
+    }
+    if (response.error) {
+      setNewComment("");
+      setLoading(false);
+      console.log(response.error, "error");
     }
   };
 
@@ -80,8 +86,7 @@ const CommentsList = ({ comments, addComment, contentId }) => {
 
   React.useEffect(() => {
     setTimeout(() => {
-      // Scrolls down after rendering the page
-      handleClickScroll("down");
+      handleClickScroll("down", true);
       checkIsScrollable();
       handleVisibilityScrollButtons();
     }, 0);
@@ -160,6 +165,7 @@ const CommentsList = ({ comments, addComment, contentId }) => {
           value={newComment}
           name="newComment"
           onChange={(value) => setNewComment(value)}
+          loading={loading}
         />
         <Button onClick={() => submitComment()} disabled={!newComment}>
           <Icon alt="play" icon={PlayIcon} size="medium" />

@@ -1,4 +1,5 @@
 import React from "react";
+import BeatLoader from "react-spinners/BeatLoader";
 
 import styles from "./Input.module.scss";
 
@@ -10,15 +11,25 @@ const Input = ({
   onChange,
   size,
   onKeyDown,
+  loading,
 }) => {
   // Defensive
   if (!name || !onChange) return null;
 
-  const classNames = [styles.input, styles[size], className].join(" ").trim();
+  const inputClassNames = [styles.input, styles[size], className]
+    .join(" ")
+    .trim();
+  const spinnerClassNames = [styles.spinner, styles[size], className]
+    .join(" ")
+    .trim();
 
-  return (
+  return loading ? (
+    <div className={spinnerClassNames}>
+      <BeatLoader color="black" size={8} />
+    </div>
+  ) : (
     <input
-      className={classNames}
+      className={inputClassNames}
       onKeyDown={onKeyDown}
       type="text"
       name={name}

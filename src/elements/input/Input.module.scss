@@ -25,3 +25,16 @@
     font-size: pxToRem(16);
   }
 }
+
+.spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: pxToRem(220);
+  height: pxToRem(40);
+
+  .big {
+    width: pxToRem(500);
+    height: pxToRem(100);
+  }
+}

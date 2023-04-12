@@ -22,21 +22,13 @@ const Detail = ({ contents, comments, likes, addLike, deleteLike }) => {
   const [likeCount, setLikeCount] = React.useState(0);
   const [commentsList, setCommentsList] = React.useState(null);
   const [liked, setLiked] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
 
-  const getDetails = () => {
+  const getLikesDetails = async () => {
     const allLikes = likes.filter(
       (like) => like.contentId === contentId
     ).length;
     setLikeCount(allLikes);
-
-    const allComments = comments.filter(
-      (comment) => comment.contentId === contentId
-    );
-    setCommentsList(allComments);
-
-    const index = findIndex(contents, { id: contentId });
-    const content = contents[index];
-    setContentDetails(content);
 
     const hasLiked = likes.filter(
       (like) => like.contentId === contentId && like.userId === userId
@@ -44,9 +36,36 @@ const Detail = ({ contents, comments, likes, addLike, deleteLike }) => {
     setLiked(!!hasLiked);
   };
 
+  const getComments = async () => {
+    const allComments = comments.filter(
+      (comment) => comment.contentId === contentId
+    );
+    setCommentsList(allComments);
+  };
+
+  const getContentDetails = async () => {
+    const index = findIndex(contents, { id: contentId });
+    const content = contents[index];
+    setContentDetails(content);
+  };
+
   React.useEffect(() => {
-    getDetails();
+    (async () => {
+      try {
+        setLoading(true);
+        await getLikesDetails();
+        await getComments();
+        await getContentDetails();
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [contentId, likes, comments]);
+
+  if (loading) return null;
 
   return (
     <div className={styles.component}>
@@ -78,7 +97,7 @@ const Detail = ({ contents, comments, likes, addLike, deleteLike }) => {
           </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <p>Could not get any details about this video</p>
       )}
     </div>
   );
