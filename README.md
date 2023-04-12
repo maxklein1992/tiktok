@@ -2,14 +2,13 @@
 
 This is a web application based on the real Tiktok website.
 
-Real Tik tok
 ![image](https://static01.nyt.com/images/2022/10/26/technology/personaltech/26TECHTIP-TOP/26TECHTIP-TOP-superJumbo.jpg)
 
 ## About this project
 
 These are the functionalities that you can perform in the app:
 
-- See a content video in detail
+- See a video in detail
 
 - Like / unlike a video
 
