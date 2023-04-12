@@ -1,20 +1,21 @@
 <h1 align="center">Tik tok App</h1>
 
-This is a Tik tok web application without database where the user can watch videos, he can like videos, and he can comment on videos.
+This is a web application based on the real Tiktok website.
+
+Real Tik tok
+![image](https://static01.nyt.com/images/2022/10/26/technology/personaltech/26TECHTIP-TOP/26TECHTIP-TOP-superJumbo.jpg)
 
 ## About this project
 
-These are the functionalities that you can perform in the app,.
+These are the functionalities that you can perform in the app:
 
 - See a content video in detail
 
-- Like / Unlike a video
+- Like / unlike a video
 
 - Comment on a video
 
-- Scroll to the comments under a video
-
-![image](https://static01.nyt.com/images/2022/10/26/technology/personaltech/26TECHTIP-TOP/26TECHTIP-TOP-superJumbo.jpg)
+- Scroll through the comments under a video
 
 
 ## Getting started
