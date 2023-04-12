@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 import styles from "./CommentsList.module.scss";
 import * as commentsActions from "../../redux/actions/comments";
@@ -12,6 +13,8 @@ import { capitalizeFirstLetter } from "../../utils/string";
 import Input from "../../elements/input";
 
 const CommentsList = ({ comments, addComment, contentId, user }) => {
+  const { t } = useTranslation();
+
   const firstMessageRef = React.useRef(null);
   const lastMessageRef = React.useRef(null);
   const [newComment, setNewComment] = React.useState("");
@@ -101,7 +104,7 @@ const CommentsList = ({ comments, addComment, contentId, user }) => {
           id="scrollable-area"
         >
           {isEmpty ? (
-            <p>No comments yet</p>
+            <p>{t("components.commentsList.no_comments")}</p>
           ) : (
             comments.map((comment, i) => {
               return (
@@ -160,7 +163,7 @@ const CommentsList = ({ comments, addComment, contentId, user }) => {
       <div className={styles.inputContainer}>
         <Input
           onKeyDown={(event) => newComment && keyboardSupport(event)}
-          placeholder="Message..."
+          placeholder={`${t("components.commentsList.message")}...`}
           value={newComment}
           name="newComment"
           onChange={(value) => setNewComment(value)}

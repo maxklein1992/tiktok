@@ -1,0 +1,13 @@
+{
+  "components": {
+    "commentsList": {
+      "message": "Message",
+      "no_comments": "No comments yet"
+    }
+  },
+  "pages": {
+    "detail": {
+      "no_details": "Could not get any details about this video"
+    }
+  }
+}

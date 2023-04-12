@@ -15,16 +15,17 @@ const Home = ({ contents }) => {
   return (
     <div className={styles.component}>
       <div className={styles.contentsOverview}>
-        {contents.map((content) => {
-          return (
-            <Card
-              key={`content: ${content.title}`}
-              onClick={() => goToVideo({ id: content.id })}
-              id={content.id}
-              youtubeId={content.youtubeId}
-            />
-          );
-        })}
+        {contents &&
+          contents.map((content) => {
+            return (
+              <Card
+                key={`content: ${content.title}`}
+                onClick={() => goToVideo({ id: content.id })}
+                id={content.id}
+                youtubeId={content.youtubeId}
+              />
+            );
+          })}
       </div>
     </div>
   );

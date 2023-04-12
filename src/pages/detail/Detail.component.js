@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { useLocation } from "react-router-dom";
 import findIndex from "lodash.findindex";
 import YouTube from "react-youtube";
+import { useTranslation } from "react-i18next";
 
 import styles from "./Detail.module.scss";
 import * as likesActions from "../../redux/actions/likes";
@@ -15,6 +16,7 @@ import Button from "../../elements/button";
 import CommentsList from "../../components/commentsList";
 
 const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
+  const { t } = useTranslation();
   const location = useLocation();
   const contentId = location.state.id;
   const userId = user.id;
@@ -23,7 +25,7 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
   const [likeCount, setLikeCount] = React.useState(0);
   const [commentsList, setCommentsList] = React.useState(null);
   const [liked, setLiked] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
 
   const getLikesDetails = async () => {
     const allLikes = likes.filter(
@@ -107,7 +109,7 @@ const Detail = ({ contents, comments, likes, user, addLike, deleteLike }) => {
           </div>
         </>
       ) : (
-        <p>Could not get any details about this video</p>
+        <p>${t("pages.detail.no_details")}</p>
       )}
     </div>
   );

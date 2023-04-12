@@ -12,9 +12,10 @@ import Button from "../../elements/button";
 
 const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
   const [liked, setLiked] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
   const userId = user.id;
 
-  const getDetails = () => {
+  const getDetails = async () => {
     const hasLiked = likes.filter(
       (like) => like.contentId === id && like.userId === userId
     ).length;
@@ -22,8 +23,20 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
   };
 
   React.useEffect(() => {
-    getDetails();
+    (async () => {
+      try {
+        setLoading(true);
+        await getDetails();
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    })();
   }, [id, likes]);
+
+  if (loading) return null;
 
   return (
     <div className={styles.component} onClick={onClick}>
@@ -62,7 +75,7 @@ const Card = ({ onClick, id, user, likes, addLike, deleteLike, youtubeId }) => {
 
 export default connect(
   (state) => ({
-    user: state.user,
+    user: state.user.user,
     likes: state.likes.likes,
   }),
   (dispatch) => ({
